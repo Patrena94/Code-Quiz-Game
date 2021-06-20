@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="assets/style.css"/>
+    <title>Quiz Game</title>
+    <style>
+        .hide{display: none;
+        }
+</style>
+  </head>
+  <body>
+      
+<div class = "Highscores">
+<a href= "Highscores.html">High Scores</a>
+<div class="Timer">Time Remaining: <span id="time">0</span></div>
+<class id="start-screen" class="start">
+<div class= "wrapper">
+<div class=card-body> 
+<div id="introDiv">
+<header>  
+<h1>Quiz Game</h1>
+<p>Try to answer the following code-related questions within the time limit.  Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+<button id = "startBtn">start</button>
+</div> 
+<div id="end-screen" class="hide"></div>
+<div class="card-Body">
+<div id ="questions" class = "hide">
+</header>      
+<h1 id="title"></h1>
+<ul>
+    <ol>
+        <button id="option1"></button>
+    </ol>
+    <ol>    
+        <button id="option2"></button>
+    </ol>
+    <ol>  
+        <button id="option3"></button>
+    </ol>
+    <ol>  
+        <button id="option4"></button>
+
+    </ol>
+</ul>
+</div>
+<div id="initialDiv" class="hide">
+    <h2> All Done!</h2>
+    Your final score
+   <div id ="feedback" class ="feedback hide"></div>
+    Enter initials:
+    <input type="text" id="initial" max="3">
+    <button id="submit">Submit</button>
+    </div>
+</div>
+</div>
+<script>
+    var startBtn = document.querySelector("#startBtn")
+    var questionsDiv = document.querySelector ("#questions")
+    var introDiv = document.querySelector("#introDiv")
+    var time = document.querySelector("#time")
+    var initialDiv = document.querySelector("#initialDiv")
+    var title=document.querySelector("#title")
+    var option1=document.querySelector("#option1")
+    var option2=document.querySelector("#option2")
+    var option3=document.querySelector("#option3")
+    var option4=document.querySelector("#option4")
+    var option5=document.querySelector("#option5")
+    var option6=document.querySelector("#option6")
+    var option7=document.querySelector("#option7")
+    var option8=document.querySelector("#option8")
+    var option9=document.querySelector("#option9")
+    var option10=document.querySelector("#option10")
+
+var questions = [
+{
+q: 'How many days are in a year?',
+c: ['365', '784', '24','364'],
+a:"365"
+},
+{q: 'The Condition in an if/else statement is enclosed with ________?',
+c: ['quotes', 'curly brackets', 'parenthesis', 'square brackets'], 
+a: "parenthesis" },
+{
+q: 'Can pigs fly?',  
+c: ['no', 'on friday', 'maybe', 'yes'],
+a:"no"
+},
+{
+q: 'Arrays in JavaScript can be used to store____?',
+c: ['numbers and strings', 'other arrays', 'booleans', 'all of the above'], 
+a: "all of the above" },
+  {
+q: 'burgers can be made with which of the following proteins?', 
+c: ['Turkey', 'Beans', 'Beef', 'all of the above'],
+a: "all of the above"},
+{
+q: 'String values must be enclosed within ______when being assigned to variables.',
+c: ['commas', 'curly brackets', 'quotes', 'parenthesis'], 
+a: "quotes"},
+{
+q: 'The Magna Carta was agreed to or signed in?',
+c: ['1214', '1215', '1512', '1575'], 
+a: "1215" },
+{
+q: 'A very useful tool used during development and debugging for printing content to the debugger is:',
+c: ['JavaScript', 'terminal/bash', 'for loops', 'console.log'], 
+a: "console.log" },
+{ 
+q: 'the Declaration of Independence was created in?', 
+c: ['1864', '1715', '1776', '1765'],
+a:"1776"},
+{
+q: 'Commonly used data types Do Not include:',
+c: ['strings', 'booleans', 'alerts', 'numbers'], 
+a: "alerts"},
+]
+var timeRemaining = questions.length *15
+
+var questionIndex=0
+
+var pidClock
+
+
+startBtn.addEventListener("click", function (){
+    questionsDiv.classList.remove("hide")
+    introDiv.classList.add("hide")
+    loadQuestion()
+    startBtn.style.display="none"
+    pidClock=setInterval(countDown, 1000)
+})
+function loadQuestion(){
+
+    title.textContent=questions[questionIndex].q  
+    option1.textContent=questions[questionIndex].c[0]
+    option2.textContent=questions[questionIndex].c[1]
+    option3.textContent=questions[questionIndex].c[2]
+    option4.textContent=questions[questionIndex].c[3]
+loadQuestion( )
+} 
+ function countDown(){ 
+  if(timeRemaining<=0 ||questionIndex>= questions.length)
+ {
+ clearInterval(pidClock)
+ questionsDiv.classList.add("hide")
+   initialDiv.classList.remove("hide")
+}
+time.textContent =timeRemaining
+timeRemaining--  //timeRemaining - timeRemaining-1
+}
+function loadQuestion(){
+    title.textContent=questions[questionIndex].q
+    option1.textContent=questions[questionIndex].c[0]
+    option2.textContent=questions[questionIndex].c[1]
+    option3.textContent=questions[questionIndex].c[2]
+    option4.textContent=questions[questionIndex].c[3]
+   
+}
+loadQuestion()
+option1.addEventListener("click", function(){
+    console.log (this.textContent)
+    if(this.textContent==questions[questionIndex].a){window.alert("correct");
+    timeRemaining+=15
+    } else {
+        window.alert("incorrect");
+       timeRemaining-=15 
+    }
+    questionIndex++
+    if(questionIndex<questions.length){
+    loadQuestion()} 
+})
+
+option2.addEventListener("click", function(){
+    console.log (this.textContent)
+    if(this.textContent==questions[questionIndex].a){window.alert("correct"); 
+    timeRemaining+=15
+    } else {
+        window.alert("incorrect");
+       timeRemaining-=15 
+    }
+    questionIndex++
+    if(questionIndex<questions.length){
+    loadQuestion()} 
+})
+
+option3.addEventListener("click", function(){
+    console.log (this.textContent)
+    if(this.textContent==questions[questionIndex].a){window.alert("correct");
+    timeRemaining+=15
+    } else {
+        window.alert("incorrect");
+       timeRemaining-=15 
+    }
+    questionIndex++
+    if(questionIndex<questions.length){
+    loadQuestion()} 
+})
+
+option4.addEventListener("click", function(){
+    console.log (this.textContent)
+    if(this.textContent==questions[questionIndex].a){window.alert("correct");
+    timeRemaining+=15
+    } else {
+        window.alert("incorrect");
+       timeRemaining-=15 
+    }
+    questionIndex++
+if(questionIndex<questions.length){
+    loadQuestion()} 
+})
+</script>
+<script src="./assets/Password.js"></script>
+  </body>
+  <footer>
+    <h3>Created by Patrena A.D.Smith</h3>
+    <div>
+      &copy; 2021 Patrena A. D. Smith, LLC.
+  </div>
+</footer>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
