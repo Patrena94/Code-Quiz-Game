@@ -74,4 +74,7 @@ loadQuestion()
     Centered start button/header
     Enlarged font on header
     changed header font color for the statement to Navy Blue.
-    changed file name from Qindex to index.html
+    changed file name from Qindex to index.html; new repo created
+    linked submit button to Highscores.html to allow transfer to that document
+Entered the local storage/High score calculation with the ability to only list the top 4 scores.
+   

@@ -52,7 +52,7 @@
    <div id ="feedback" class ="feedback hide"></div>
     Enter initials:
     <input type="text" id="initial" max="3">
-    <button id="submit">Submit</button>
+    <button id="submit" onclick="location.href='./Highscores.html'">Submit</button>
     </div>
 </div>
 </div>
@@ -210,8 +210,33 @@ option4.addEventListener("click", function(){
 if(questionIndex<questions.length){
     loadQuestion()} 
 })
+const initial=document.getElementById("#initial")
+const Submitbtn=document.getElementById("#Submitbtn")
+const finalscore =document.getElementById("#finalscore")
+const mostRecentScore =localStorage.getItem("mostRecentScore")
+
+const Highscores = JSON.parse(localStorage.getItem("highscores")) || []; 
+const MAX_High_score=4;
+console.log(Highscores);
+
+finalscore.innerText = mostRecentScore; 
+
+initial.addEventListener("keyup",()=> {Submitbtn.disabled= Initial.value;
+});
+saveHighscore = e => {
+    console.log("clicked the submit button!");
+    e.preventDefault();
+const score = {
+    score: mostRecentScore,
+    name: initial.value};
+};
+Highscores.push(score);
+Highscores.sort((a,b)=> b.score-a.score)
+Highscores.splice(4);
+localStorage.setItem("highScores", JSON.stringify(highscores));
+console.log(Highscores);
+
 </script>
-<script src="./assets/Password.js"></script>
   </body>
   <footer>
     <h3>Created by Patrena A.D.Smith</h3>
