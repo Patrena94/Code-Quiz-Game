@@ -22,7 +22,7 @@
 <div id="introDiv">
 <header>  
 <h1>Quiz Game</h1>
-<p>Try to answer the following code-related questions within the time limit.  Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+<p>Try to answer the following code-related questions within the time limit.  Keep in mind that incorrect answers will penalize your score/time by fifteen seconds!</p>
 <button id = "startBtn">start</button>
 </div> 
 <div id="end-screen" class="hide"></div>
@@ -211,7 +211,7 @@ if(questionIndex<questions.length){
     loadQuestion()} 
 })
 const initial=document.getElementById("#initial")
-const Submitbtn=document.getElementById("#Submitbtn")
+const SubmitBtn=document.getElementById("#SubmitBtn")
 const finalscore =document.getElementById("#finalscore")
 const mostRecentScore =localStorage.getItem("mostRecentScore")
 
@@ -221,7 +221,7 @@ console.log(Highscores);
 
 finalscore.innerText = mostRecentScore; 
 
-initial.addEventListener("keyup",()=> {Submitbtn.enabled= Initial.value;
+initial.addEventListener("keyup",()=> {SubmitBtn= Initial.value;
 });
 saveHighscore = e => {
     console.log("clicked the submit button!");
